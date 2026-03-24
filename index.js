@@ -7,6 +7,8 @@ const port = process.env.PORT || 5000;
 
 configureDB();
 
+
+
 //start the server
 app.listen(() => {
   console.log(`Server is running on ${port}`);
