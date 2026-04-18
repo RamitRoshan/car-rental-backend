@@ -8,9 +8,9 @@ const port = process.env.PORT || 5000;
 configureDB();
 
 
-app.get("/", async){
-  console.log("get method")
-};
+// app.get("/", async){
+//   console.log("get method")
+// };
 
 //start the server
 app.listen(() => {
