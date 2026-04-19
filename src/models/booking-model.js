@@ -2,9 +2,10 @@ const mongoose = require("mongoose");
 
 const bookingSchema = new mongoose.Schema(
   {
+    //This field stores an ObjectId, That ObjectId points to User collection
     user_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "User", //It tells Mongoose:This ObjectId belongs to the User model
       required: true,
     },
     car_name: {
@@ -14,10 +15,12 @@ const bookingSchema = new mongoose.Schema(
     days: {
       type: Number,
       required: true,
+      max: 364
     },
     rent_per_day: {
       type: Number,
       required: true,
+      max: 2000
     },
     status: {
       type: String,
