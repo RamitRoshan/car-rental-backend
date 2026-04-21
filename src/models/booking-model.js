@@ -15,12 +15,12 @@ const bookingSchema = new mongoose.Schema(
     days: {
       type: Number,
       required: true,
-      max: 364
+      max: 364,
     },
     rent_per_day: {
       type: Number,
       required: true,
-      max: 2000
+      max: 2000,
     },
     status: {
       type: String,
