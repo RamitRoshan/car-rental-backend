@@ -107,6 +107,49 @@ const updateBooking = async (user, bookingId, data) => {
   if (data.days) booking.days = data.days;
   if (data.rentPerDay) booking.rent_per_day = data.rentPerDay;
   if (data.status) booking.status = data.status;
+
+  //Business validation
+  if (booking.days >= 365 || booking.rent_per_day > 2000) {
+    throw { status: 400, message: "Invalid inputs" };
+  }
+  await booking.save();
+
+  return {
+    message: "Booking updated successfully",
+    booking: {
+      id: booking._id,
+      car_name: booking.car_name,
+      days: booking.days,
+      rent_per_day: booking.rent_per_day,
+      status: booking.status,
+      totalCost: booking.days * booking.rent_per_day,
+    },
+  };
 };
 
 //delete booking
+const deleteBooking = async (user, bookingId) => {
+  const booking = await Booking.findById(bookingId);
+
+  if (!booking) {
+    throw { status: 404, message: "Booking not found" };
+  }
+
+  //ownership checking
+  if (booking.user_id.toString() !== user.userId.toString()) {
+    throw { status: 403, message: "Booking does not belong to user" };
+  }
+
+  await Booking.findByIdAndDelete(bookingId);
+
+  return {
+    message: "Booking deleted successfully",
+  };
+};
+
+module.exports = {
+  createBooking,
+  getBookings,
+  updateBooking,
+  deleteBooking,
+};
