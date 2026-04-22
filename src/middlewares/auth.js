@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
+const User = require("../models/user-model");
 
 const userAuth = async (req, res, next) => {
   try {
@@ -19,10 +19,12 @@ const userAuth = async (req, res, next) => {
 
     //We expect EXACTLY 2 parts: 1. Bearer 2.Token
     if (parts.length !== 2 || parts[0] !== "Bearer") {
-      return res.status(401).json({success: false, error: "Token missing after Bearer"});
+      return res
+        .status(401)
+        .json({ success: false, error: "Token missing after Bearer" });
     }
 
-    //parts[0] = "Bearer" (not useful), parts[1] = actual token 
+    //parts[0] = "Bearer" (not useful), parts[1] = actual token
     const token = parts[1];
 
     //Verify token
@@ -45,14 +47,12 @@ const userAuth = async (req, res, next) => {
 
     //Move to next middleware/controller
     next();
-    
   } catch (err) {
     return res.status(401).json({ success: false, error: "Token invalid" });
   }
 };
 
 module.exports = userAuth;
-
 
 /*
 Why use success flag?

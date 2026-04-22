@@ -1,4 +1,4 @@
-# Car Rental System Backend (PostgreSQL + JWT)
+# Car Rental System Backend (NoSQL + JWT)
 
 ## Objective
 
