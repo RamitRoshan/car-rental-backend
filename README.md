@@ -2,7 +2,7 @@
 
 ## Objective
 
-Build a backend for a **Car Rental System** using **Express**, **PostgreSQL**, and **JWT authentication**.
+Build a backend for a **Car Rental System** using **Express**, **NoSQL**, and **JWT authentication**.
 
 This assignment focuses on:
 
@@ -17,7 +17,7 @@ This assignment focuses on:
 ## Tech Stack
 
 - Node.js + Express
-- PostgreSQL
+- NoSQL
 - JWT (JSON Web Token)
 - bcrypt (recommended)
 

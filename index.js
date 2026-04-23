@@ -19,7 +19,7 @@ app.use("/api/bookings", bookingRoutes);
 
 //test routes(just for testing, evrythg working or not)
 app.get("/", (req, res) => {
-  console.log("get method hit");
+  //console.log("get method hit");
   res.send("Just checking API is running");
 });
 

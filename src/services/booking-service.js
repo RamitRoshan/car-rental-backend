@@ -14,7 +14,7 @@ const createBooking = async (user, data) => {
 
   //create booking
   const booking = await Booking.create({
-    user_id: user.user_id,
+    user_id: user.userId,
     car_name: carName,
     days,
     rent_per_day: rentPerDay,
@@ -36,7 +36,7 @@ const getBookings = async (user, query) => {
   if (bookingId) {
     const booking = await Booking.findOne({
       _id: bookingId,
-      user_id: user.user_id,
+      user_id: user.userId,
     });
     if (!booking) {
       throw { status: 404, message: "Booking not found" };
